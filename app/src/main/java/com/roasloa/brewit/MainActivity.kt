@@ -1,16 +1,20 @@
 package com.roasloa.brewit
 
+import android.graphics.Canvas
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import com.roasloa.brewit.Models.RadialProgressBar
 
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity() {
+
 
 
 
@@ -21,17 +25,19 @@ class MainActivity : AppCompatActivity() {
 
 
 
+
         object: CountDownTimer(30000, 1000){
             override fun onFinish() {
-                println("done")
+//                println("done")
+                radialProgressBar.progress = 0
             }
 
             override fun onTick(millisUntilFinished: Long) {
-                println("seconds remaining: " + millisUntilFinished / 1000)
+//                println("seconds remaining: " + millisUntilFinished / 1000)
 
                 var percentage: Long = millisUntilFinished/300
                 println(percentage)
-                progressBar2.progress = percentage.toInt()
+                radialProgressBar.progress = percentage.toInt()
 
 
             }

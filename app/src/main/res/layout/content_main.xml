@@ -8,6 +8,15 @@
                                              tools:context=".MainActivity"
                                              tools:showIn="@layout/activity_main"
                                              android:id="@+id/coordinatorLayout">
+    <com.roasloa.brewit.Models.RadialProgressBar
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:progress="70"
+            android:id="@+id/radialProgressBar" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@android:color/transparent" android:indeterminate="false"
+            style="?android:attr/progressBarStyleHorizontal"/>
     <Button
             android:layout_width="50dp"
             android:layout_height="50dp" android:id="@+id/button"
@@ -15,17 +24,5 @@
             android:paddingBottom="64dp" android:backgroundTint="@color/colorPrimaryDark"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="32dp" app:layout_constraintTop_toBottomOf="@+id/progressBar2"/>
-    <ProgressBar
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:id="@+id/progressBar2"
-            android:max="100"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:progress="90" android:indeterminate="false"
-            android:progressDrawable="@drawable/custom_progress"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintDimensionRatio="h,1:1" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.5"/>
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/radialProgressBar"/>
 </android.support.constraint.ConstraintLayout>
