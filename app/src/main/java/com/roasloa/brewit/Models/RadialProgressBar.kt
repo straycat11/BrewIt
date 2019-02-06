@@ -47,6 +47,6 @@ class RadialProgressBar : ProgressBar {
             boundsF?.inset(halfThickness,halfThickness)
         }
 
-        canvas?.drawArc(boundsF,startAngle,progress *3.60f, false, paint)
+        canvas?.drawArc(boundsF,startAngle,progress *-3.60f, false, paint)
     }
 }

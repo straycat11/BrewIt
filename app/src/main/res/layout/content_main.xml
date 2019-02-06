@@ -11,7 +11,7 @@
     <com.roasloa.brewit.Models.RadialProgressBar
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:progress="70"
+            android:progress="100"
             android:id="@+id/radialProgressBar" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
@@ -19,10 +19,19 @@
             style="?android:attr/progressBarStyleHorizontal"/>
     <Button
             android:layout_width="50dp"
-            android:layout_height="50dp" android:id="@+id/button"
+            android:layout_height="50dp" android:id="@+id/startButton"
             android:background="@android:drawable/ic_media_play"
             android:paddingBottom="64dp" android:backgroundTint="@color/colorPrimaryDark"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/radialProgressBar"/>
+            android:layout_marginTop="64dp" app:layout_constraintTop_toBottomOf="@+id/radialProgressBar"
+            android:onClick="startButtonClicked"/>
+    <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/stopButton"
+            android:background="@android:drawable/ic_media_pause" android:backgroundTint="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="64dp"
+            app:layout_constraintTop_toBottomOf="@+id/radialProgressBar" android:onClick="stopButtonClicked"/>
 </android.support.constraint.ConstraintLayout>

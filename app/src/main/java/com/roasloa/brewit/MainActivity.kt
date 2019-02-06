@@ -15,18 +15,13 @@ import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity() {
 
-
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
+    val newTimer = timer(30000,1000)
 
 
 
 
-        object: CountDownTimer(30000, 1000){
+    private fun timer(millisInFuture: Long, countDownInterval: Long): CountDownTimer{
+        return object: CountDownTimer(millisInFuture, countDownInterval){
             override fun onFinish() {
 //                println("done")
                 radialProgressBar.progress = 0
@@ -35,14 +30,29 @@ class MainActivity : AppCompatActivity() {
             override fun onTick(millisUntilFinished: Long) {
 //                println("seconds remaining: " + millisUntilFinished / 1000)
 
-                var percentage: Long = millisUntilFinished/300
+                val percentageInFuture = millisInFuture/100
+
+                var percentage: Long = millisUntilFinished/percentageInFuture
                 println(percentage)
                 radialProgressBar.progress = percentage.toInt()
 
 
             }
 
-        }.start()
+        }
+    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        setSupportActionBar(toolbar)
+
+        stopButton.visibility = View.INVISIBLE
+
+
+
+
+
+
 
 
     }
@@ -63,6 +73,24 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    fun startButtonClicked(view: View){
+        startButton.visibility = View.INVISIBLE
+        stopButton.visibility = View.VISIBLE
+
+        newTimer.start()
+
+
+    }
+
+
+    fun stopButtonClicked(view: View){
+        newTimer.cancel()
+
+        radialProgressBar.progress = 100
+
+        startButton.visibility = View.VISIBLE
+        stopButton.visibility = View.INVISIBLE
+    }
 
 
 
