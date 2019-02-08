@@ -1,21 +1,22 @@
 package com.roasloa.brewit
 
-import android.graphics.Canvas
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import com.roasloa.brewit.Models.RadialProgressBar
+import com.roasloa.brewit.Utilities.TimePicker
 
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    val newTimer = timer(30000,1000)
+    var newTimer = timer(30000,1000)
+
+    private lateinit var picker: TimePicker
 
 
 
@@ -42,6 +43,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        picker = TimePicker()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
@@ -74,6 +77,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun startButtonClicked(view: View){
+
+        val millisInFuture = picker.minutes*60000 + picker.seconds*1000
+
+
+        newTimer = timer(millisInFuture.toLong(),1000)
+
+        Log.d("TIM", "The timer is set to ${picker.minutes} minutes, ${picker.seconds} seconds.")
+
         startButton.visibility = View.INVISIBLE
         stopButton.visibility = View.VISIBLE
 
@@ -90,6 +101,15 @@ class MainActivity : AppCompatActivity() {
 
         startButton.visibility = View.VISIBLE
         stopButton.visibility = View.INVISIBLE
+    }
+
+    fun showTimePickerDialog(view: View){
+
+
+        picker.show(supportFragmentManager, "timePicker")
+
+
+
     }
 
 

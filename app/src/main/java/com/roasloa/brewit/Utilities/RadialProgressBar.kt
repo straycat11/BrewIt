@@ -1,4 +1,4 @@
-package com.roasloa.brewit.Models
+package com.roasloa.brewit.Utilities
 
 import android.content.Context
 import android.graphics.Canvas
