@@ -1,5 +1,6 @@
 package com.roasloa.brewit
 
+import android.app.Dialog
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import com.roasloa.brewit.Utilities.TimePicker
 
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import java.sql.Time
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,21 +38,24 @@ class MainActivity : AppCompatActivity() {
                 var percentage: Long = millisUntilFinished/percentageInFuture
                 println(percentage)
                 radialProgressBar.progress = percentage.toInt()
+                timeTxt.text = "${(millisUntilFinished/60000).toInt()}:${((millisUntilFinished.rem(60000))/1000).toInt()}"
 
 
             }
 
         }
     }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        picker = TimePicker()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
         stopButton.visibility = View.INVISIBLE
 
+        picker = TimePicker()
 
 
 
@@ -103,10 +108,11 @@ class MainActivity : AppCompatActivity() {
         stopButton.visibility = View.INVISIBLE
     }
 
-    fun showTimePickerDialog(view: View){
+    fun timerPickerClicked(view: View){
 
 
         picker.show(supportFragmentManager, "timePicker")
+        timeTxt.text = "${picker.minutes}:${picker.seconds}"
 
 
 

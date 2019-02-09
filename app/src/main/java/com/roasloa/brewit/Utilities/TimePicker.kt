@@ -7,13 +7,17 @@ import android.support.v4.app.DialogFragment
 import android.text.format.DateFormat
 import android.widget.TimePicker
 import java.util.*
+import com.roasloa.brewit.MainActivity
+import kotlinx.android.synthetic.main.content_main.*
 
-class TimePicker : DialogFragment(), TimePickerDialog.OnTimeSetListener {
+open class TimePicker : DialogFragment(), TimePickerDialog.OnTimeSetListener {
 
     var minutes: Int = 0
     var seconds: Int = 0
 
     var isPicked: Boolean = false
+
+
 
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
